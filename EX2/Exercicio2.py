@@ -1,27 +1,24 @@
-def verificar_letra_a(texto):
-    texto_lower = texto.lower()
-    
-    contagem = texto_lower.count('a')
-    
-    existe = contagem > 0
-    
-    return existe, contagem
+def fibonacci_sequence(limit):
+    fib = [0, 1]
+    while fib[-1] <= limit:
+        fib.append(fib[-1] + fib[-2])
+    return fib[:-1]
 
-def analisar_texto(texto):
-    existe, contagem = verificar_letra_a(texto)
-    
-    print(f"Texto analisado: '{texto}'")
-    if existe:
-        print(f"A letra 'a' (ou 'A') aparece {contagem} vez(es) no texto.")
-    else:
-        print("A letra 'a' (ou 'A') não aparece no texto.")
+def is_in_fibonacci(number):
+    fib = fibonacci_sequence(number)
+    if number in fib:
+        return True, fib
+    return False, fib
 
-texto_predefinido = "O rato roeu a roupa do rei de Roma."
-print("Análise do texto predefinido:")
-analisar_texto(texto_predefinido)
 
-print("\nAgora é sua vez!")
-texto_usuario = input("Digite um texto para analisar (ou pressione Enter para sair): ")
-if texto_usuario:
-    print("\nAnálise do seu texto:")
-    analisar_texto(texto_usuario)
+number_to_check = 34
+
+belongs, sequence = is_in_fibonacci(number_to_check)
+
+print(f"Sequência de Fibonacci até {number_to_check}:")
+print(sequence)
+
+if belongs:
+    print(f"O número {number_to_check} pertence à sequência de Fibonacci.")
+else:
+    print(f"O número {number_to_check} NÃO pertence à sequência de Fibonacci.")

@@ -1,36 +1,17 @@
-import time
+def inverter_string(texto):
+    texto_invertido = ""
+    for i in range(len(texto) - 1, -1, -1):
+        texto_invertido += texto[i]
+    return texto_invertido
 
-def identify_lamps():
-    lamps = {"A": "Desligada", "B": "Desligada", "C": "Desligada"}
-    lamp_temp = {"A": "Fria", "B": "Fria", "C": "Fria"}
+string_predefinida = "Hello, World!"
 
-    print("Ligue o interruptor A por alguns minutos...")
-    lamps["A"] = "Ligada"
-    time.sleep(3)
+resultado_predefinido = inverter_string(string_predefinida)
+print(f"String predefinida: {string_predefinida}")
+print(f"String predefinida invertida: {resultado_predefinido}")
 
-    print("Desligue o interruptor A.")
-    lamps["A"] = "Desligada"
-    lamp_temp["A"] = "Quente"
-
-    print("Ligue o interruptor B.")
-    lamps["B"] = "Ligada"
-    
-    lamps["C"] = "Desligada"
-
-    return lamps, lamp_temp
-
-
-def check_lamps(lamps, lamp_temp):
-    print("\nVerifique o estado das lâmpadas:")
-    
-    for lamp, state in lamps.items():
-        if state == "Ligada":
-            print(f"A lâmpada {lamp} está acesa e corresponde ao interruptor B.")
-        elif state == "Desligada" and lamp_temp[lamp] == "Quente":
-            print(f"A lâmpada {lamp} está apagada, mas quente, e corresponde ao interruptor A.")
-        else:
-            print(f"A lâmpada {lamp} está apagada e fria, e corresponde ao interruptor C.")
-
-
-lamps, lamp_temp = identify_lamps()
-check_lamps(lamps, lamp_temp)
+string_usuario = input("\nDigite uma string para inverter (ou pressione Enter para sair): ")
+if string_usuario:
+    resultado_usuario = inverter_string(string_usuario)
+    print(f"Sua string: {string_usuario}")
+    print(f"Sua string invertida: {resultado_usuario}")
